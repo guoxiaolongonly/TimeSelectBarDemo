@@ -1,3 +1,34 @@
+## 一个时间条选择工具
+
+![lucky](https://raw.githubusercontent.com/guoxiaolongonly/TimeSelectBarDemo/master/pic/666.png)
+
+
+
+## 使用
+
+```xml
+        <cn.xiaolongonly.timebarselect.ScalableTimebarView
+            android:id="@+id/my_timebar_view2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#cd000000"
+            app:displayLineColor="@color/color_33ffffff"
+            app:indicateLineColor="@color/colorWhite"
+            app:indicateTriangleColor="@color/colorWhite"
+            app:outOfRangeColor="@color/color_gray"
+            app:tickLineColor="@color/colorWhite"
+            app:tickTextColor="@color/colorWhite"
+            app:unDisplayLineColor="@color/color_33ffffff" />
+
+```
+
+
+### 依赖
+
+Example for Gradle:
+
+``` gradle
 allprojects {
 		repositories {
 			...
@@ -8,3 +39,6 @@ allprojects {
 dependencies {
 	        implementation 'com.github.guoxiaolongonly:TimeSelectBarDemo:1.0.0'
 	}
+	
+```
+
