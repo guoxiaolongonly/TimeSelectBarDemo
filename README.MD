@@ -1,6 +1,6 @@
 [![version](https://jitpack.io/v/guoxiaolongonly/TimeSelectBarDemo.svg)](https://jitpack.io/#guoxiaolongonly/TimeSelectBarDemo)
 ## 功能如下
-![lucky](https://raw.githubusercontent.com/guoxiaolongonly/TimeSelectBarDemo/master/pic/666.png)
+![lucky](https://github.com/guoxiaolongonly/TimeSelectBarDemo/blob/master/pic/666.gif?raw=true)
 
 
 
