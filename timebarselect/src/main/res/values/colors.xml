@@ -4,4 +4,11 @@
     <color name="colorMainText">#333333</color>
     <color name="colorMainBlue">#0070fa</color>
     <color name="colorLightBlue">#73beff</color>
+
+
+    <color name="colorRecordGreen">#12A76B</color>
+    <color name="colorGrayTransparent">#1affffff</color>
+    <color name="color_33ffffff">#33ffffff</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
 </resources>

@@ -37,5 +37,8 @@
         <attr name="tickTextColor" format="color" />
         <!--超出绘制区域颜色-->
         <attr name="outOfRangeColor" format="color" />
+
+        <!--高亮区域颜色-->
+        <attr name="recordColor" format="color" />
     </declare-styleable>
 </resources>

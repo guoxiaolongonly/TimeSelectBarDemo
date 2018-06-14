@@ -13,7 +13,6 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -145,6 +144,7 @@ public class ScalableTimebarView extends View {
     private int TICK_LINE_COLOR;
     private int TICK_TEXT_COLOR;
     private int OUT_OF_RANGE_COLOR;
+    private int RECOR_COLOR;
     /**
      * Set whether middle white cursor visible.
      */
@@ -346,7 +346,8 @@ public class ScalableTimebarView extends View {
         INDICATOR_LINE_COLOR = a.getColor(R.styleable.ScalableTimebarView_indicateLineColor, getResources().getColor(R.color.color_gray));
         TICK_LINE_COLOR = a.getColor(R.styleable.ScalableTimebarView_tickLineColor, getResources().getColor(R.color.color_gray));
         TICK_TEXT_COLOR = a.getColor(R.styleable.ScalableTimebarView_tickTextColor, getResources().getColor(R.color.colorMainText));
-        OUT_OF_RANGE_COLOR = a.getColor(R.styleable.ScalableTimebarView_tickTextColor, getResources().getColor(R.color.color_gray));
+        OUT_OF_RANGE_COLOR = a.getColor(R.styleable.ScalableTimebarView_outOfRangeColor, getResources().getColor(R.color.color_gray));
+        RECOR_COLOR = a.getColor(R.styleable.ScalableTimebarView_recordColor, getResources().getColor(R.color.colorRecordGreen));
         a.recycle();
 
 
@@ -360,7 +361,7 @@ public class ScalableTimebarView extends View {
         mostRightTimeInMillisecond = currentTimeInMillisecond + 3 * 3600 * 1000;
 
         // By default the whole view width (including the parts outside the screen) is set to 7 days length
-        mostLeftTimeInMillisecond = mostRightTimeInMillisecond - 7 * 24 * 3600 * 1000;
+        mostLeftTimeInMillisecond = mostRightTimeInMillisecond - 2 * 24 * 3600 * 1000;
         WHOLE_TIMEBAR_TOTAL_SECONDS = (mostRightTimeInMillisecond - mostLeftTimeInMillisecond) / 1000;
 
         pixelsPerSecond = (float) (getWidth() - screenWidth) / (float) WHOLE_TIMEBAR_TOTAL_SECONDS;
@@ -391,6 +392,7 @@ public class ScalableTimebarView extends View {
 
         };
         scaleGestureDetector = new ScaleGestureDetector(getContext(), scaleGestureListener);
+
     }
 
     /**
@@ -422,9 +424,12 @@ public class ScalableTimebarView extends View {
         } else if (newWidth < getAverageWidthForTwoCriterion(2, 3)
                 && newWidth >= timebarTickCriterionMap.get(3).getViewLength()) {
             setCurrentTimebarTickCriterionIndex(3);
-        } else if (newWidth < timebarTickCriterionMap.get(3).getViewLength()) {
-            setCurrentTimebarTickCriterionIndex(3);
-            newWidth = timebarTickCriterionMap.get(3).getViewLength();
+        } else if (newWidth < getAverageWidthForTwoCriterion(3, 4)
+                && newWidth >= timebarTickCriterionMap.get(4).getViewLength()) {
+            setCurrentTimebarTickCriterionIndex(4);
+        } else if (newWidth < timebarTickCriterionMap.get(4).getViewLength()) {
+            setCurrentTimebarTickCriterionIndex(4);
+            newWidth = timebarTickCriterionMap.get(4).getViewLength();
         }
 
 
@@ -493,6 +498,15 @@ public class ScalableTimebarView extends View {
         t3.setViewLength((int) ((float) screenWidth * WHOLE_TIMEBAR_TOTAL_SECONDS / (float) t3.getTotalSecondsInOneScreen()));
         timebarTickCriterionMap.put(3, t3);
 
+
+        TimebarTickCriterion t4 = new TimebarTickCriterion();
+        t4.setTotalSecondsInOneScreen(6 * 24 * 60 * 60);
+        t4.setKeyTickInSecond(24 * 60 * 60);
+        t4.setMinTickInSecond(2 * 60 * 60);
+        t4.setDataPattern("MM.dd");
+        // t4.dataPattern = "MM.dd HH:mm:ss";
+        t4.setViewLength((int) ((float) screenWidth * WHOLE_TIMEBAR_TOTAL_SECONDS / (float) t4.getTotalSecondsInOneScreen()));
+        timebarTickCriterionMap.put(4, t4);
 
         timebarTickCriterionCount = timebarTickCriterionMap.size();
     }
@@ -591,12 +605,6 @@ public class ScalableTimebarView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
-        if (notInited) {
-            notInited = false;
-            resetToStandardWidth();
-            return;
-        }
 
         pixelsPerSecond = (float) (getWidth() - screenWidth) / (float) WHOLE_TIMEBAR_TOTAL_SECONDS;
 
@@ -718,7 +726,7 @@ public class ScalableTimebarView extends View {
                             + screenWidth / pixelsPerSecond
                             + timebarTickCriterionMap.get(currentTimebarTickCriterionIndex).getMinTickInSecond() * 30);
 
-                    timebarPaint.setColor(UN_DISPLAY_LINE_COLOR);
+                    timebarPaint.setColor(RECOR_COLOR);
                     timebarPaint.setStyle(Paint.Style.FILL);
 
                     for (int i = thisDateFirstClipStartIndex; i < recordDataExistTimeClipsList.size(); i++) {
@@ -932,4 +940,3 @@ public class ScalableTimebarView extends View {
 
 
 }
-
