@@ -1,5 +1,5 @@
-## 一个时间条选择工具
-
+[![version](https://jitpack.io/v/guoxiaolongonly/TimeSelectBarDemo.svg)](https://jitpack.io/#guoxiaolongonly/TimeSelectBarDemo)
+## 功能如下
 ![lucky](https://raw.githubusercontent.com/guoxiaolongonly/TimeSelectBarDemo/master/pic/666.png)
 
 
@@ -37,7 +37,7 @@ allprojects {
 	}
 	
 dependencies {
-	        implementation 'com.github.guoxiaolongonly:TimeSelectBarDemo:1.0.0'
+	        implementation 'com.github.guoxiaolongonly:TimeSelectBarDemo:1.0.1'
 	}
 	
 ```
