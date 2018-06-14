@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ScalableTimebarView">
+        <!--标示文字高度-->
+        <attr name="tickTextSize" format="dimension" />
+        <!--大标示线高度-->
+        <attr name="bigTickHeight" format="dimension" />
+        <!--大标示线宽度-->
+        <attr name="bigTickWidth" format="dimension" />
+        <!--小标示线高度-->
+        <attr name="smallTickHeight" format="dimension" />
+        <!--小标示线宽度-->
+        <attr name="smallTickWidth" format="dimension" />
+        <!--色条高度-->
+        <attr name="colorBarHeight" format="dimension" />
+        <!--三角形指示宽度-->
+        <attr name="bottomTriangleWidth" format="dimension" />
+        <!--三角形指示器高度-->
+        <attr name="bottomTriangleHeight" format="dimension" />
+        <!--指示线宽度-->
+        <attr name="lineWidth" format="dimension" />
+        <!--标示和标示文字间距-->
+        <attr name="bigTickToTickText" format="dimension" />
+
+        <!--未播放区域颜色-->
+        <attr name="unDisplayLineColor" format="color" />
+        <!--已播放区域颜色-->
+        <attr name="displayLineColor" format="color" />
+        <!--指示三角形颜色-->
+        <attr name="indicateTriangleColor" format="color" />
+        <!--指示线颜色-->
+        <attr name="indicateLineColor" format="color" />
+        <!--标示颜色-->
+        <attr name="tickLineColor" format="color" />
+        <!--标示文字颜色-->
+        <attr name="tickTextColor" format="color" />
+        <!--超出绘制区域颜色-->
+        <attr name="outOfRangeColor" format="color" />
+    </declare-styleable>
+</resources>
